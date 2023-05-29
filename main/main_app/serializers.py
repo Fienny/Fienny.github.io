@@ -1,3 +1,5 @@
+from rest_framework.response import Response
+
 from .models import *
 from rest_framework import serializers
 
@@ -12,7 +14,7 @@ class PerevalAdddedSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PerevalAdded
         fields = ['id', 'beautyTitle', 'title', 'other_titles', 'connect', 'winter_lvl', 'summer_lvl', 'autumn_lvl',
-                  'spring_lvl', 'coord_id', 'status']
+                  'spring_lvl', 'user_added', 'coord_id', 'status']
 
 
 class CoordinatesSerializer(serializers.HyperlinkedModelSerializer):
@@ -37,3 +39,10 @@ class PerevalImagesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PerevalImages
         fields = ['id', 'pereval_id', 'photo_id']
+
+
+class PerevalChangedSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = PerevalAdded
+        fields = ['beautyTitle', 'title', 'other_titles', 'connect', 'winter_lvl', 'summer_lvl', 'autumn_lvl',
+                  'spring_lvl']

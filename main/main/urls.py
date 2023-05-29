@@ -22,6 +22,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'users', views.UsersViewset)
 router.register(r'pereval_added', views.PerevalAddedViewset)
+# router.register(r'pereval_added/<int:pk>', views.pereval_addded_patch_method, "patch_method")
 router.register(r'coordinates', views.CoordinatesViewset)
 router.register(r'activity', views.ActivityViewset)
 router.register(r'pereval_areas', views.PerevalAreasViewset)
@@ -31,5 +32,7 @@ router.register(r'pereval_images', views.PerevalImagesViewset)
 urlpatterns = [
    path('admin/', admin.site.urls),
    path('', include(router.urls)),
+   path('pereval_added/<int:pk>', views.pereval_added_patch_method),
+   path('pereval_added/?user__email=<email>', views.pereval_added_patch_method),
    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

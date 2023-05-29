@@ -21,6 +21,7 @@ class PerevalAdded(models.Model):
     autumn_lvl = models.CharField()
     spring_lvl = models.CharField()
     coord_id = models.ForeignKey("Coordinates", on_delete=models.CASCADE)
+    user_added = models.ForeignKey("Users", on_delete=models.CASCADE)
     status = models.CharField(choices=STATUS_CHOICES)
 
 
