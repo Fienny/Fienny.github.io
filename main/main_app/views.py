@@ -53,6 +53,11 @@ def pereval_added_patch_method(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'PATCH':
+        if pereval.status != 'new':
+            return Response({
+                'state': 0,
+                'message': "Failed to update pereval!"
+            })
         serializer = PerevalChangedSerializer(pereval, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
