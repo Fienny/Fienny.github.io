@@ -40,3 +40,27 @@
 * _PostgreSQL_
 
 ---
+
+### Как это использовать?
+
+1. Скачайте все файлы из репозитория
+2. Создайте виртуальное окружение
+3. Установите туда все из requirements.txt
+4. В файле setting.py найдите список DATABASES и измените его:
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql', # Используем postgres
+        'NAME': 'my_db', # Ваши данные сюда
+        'USER': os.getenv("FSTR_DB_LOGIN"), # Ваши данные сюда
+        'PASSWORD': os.getenv("FSTR_DB_PASS"), # Ваши данные сюда
+        'HOST':  os.getenv("FSTR_DB_HOST"), # Ваши данные сюда
+        'PORT': os.getenv("FSTR_DB_PORT"), # Ваши данные сюда
+    },
+}
+```
+5. Все готово. Запустите localhost в терминале (python manage.py runserver). Перейдя по ссылке вы увидите возможные эндпоинты.
+
+---
+
+
